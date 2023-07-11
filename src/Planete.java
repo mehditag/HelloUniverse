@@ -1,5 +1,6 @@
 
 public class Planete {
+    static int nbPlanetesDecouvertes;
     String nom;
     int diametre;
     String matiere;
@@ -7,6 +8,11 @@ public class Planete {
     Atmosphere atmosphere;
 
     Vaisseau vaisseau;
+
+    Planete (String nom){
+        nbPlanetesDecouvertes+=1;
+        this.nom=nom;
+    }
 
     static String expansion(double distance){
         if (distance<14){
