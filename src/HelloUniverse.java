@@ -55,10 +55,24 @@ public class HelloUniverse {
         pluton.diametre=2300;
         pluton.matiere="Gazeuse";
 
-        System.out.println(jupiter.nom+" est une planète "+jupiter.matiere+" avec un diametre de "+jupiter.diametre+"km.");
+        //System.out.println(jupiter.nom+" est une planète "+jupiter.matiere+" avec un diametre de "+jupiter.diametre+"km.");
 
-        System.out.println("L'atmosphère de Uranus est composée de :");
-        uranus.atmosphere.descAtmosphere();
+        //System.out.println("L'atmosphère de Uranus est composée de :");
+        //uranus.atmosphere.descAtmosphere();
+
+        Vaisseau fregate = new Vaisseau();
+        fregate.type="Frégate";
+        fregate.nbPassagers=9;
+
+        mars.accueillirVaisseau(fregate);
+        Vaisseau croiseur = new Vaisseau();
+        croiseur.type="Croiseur";
+        croiseur.nbPassagers=42;
+
+        mars.accueillirVaisseau(croiseur);
+
+        System.out.println("Le nombre d'humains ayant déjà séjourné sur "+mars.nom+" est actuellement de "+mars.totalVisiteurs);
+
 
     }
 
