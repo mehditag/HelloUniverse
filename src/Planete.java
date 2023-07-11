@@ -8,6 +8,15 @@ public class Planete {
 
     Vaisseau vaisseau;
 
+    static String expansion(double distance){
+        if (distance<14){
+            return "Oh la la mais c'est super rapide !";
+        }
+        else{
+            return "Je rêve ou c'est plus rapide que la lumière ?";
+        }
+    }
+
     int revolution(int degres){
         System.out.println("Je suis la planète "+nom+" et je tourne autour de mon étoile de "+degres+" degrés.");
         return degres/360;

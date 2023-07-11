@@ -73,6 +73,8 @@ public class HelloUniverse {
 
         System.out.println("Le nombre d'humains ayant déjà séjourné sur "+mars.nom+" est actuellement de "+mars.totalVisiteurs);
 
+        System.out.println(Planete.expansion(10.5d));
+        System.out.println(Planete.expansion(14.2d));
 
     }
 
