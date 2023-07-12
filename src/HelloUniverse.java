@@ -1,51 +1,54 @@
+
+
+
 public class HelloUniverse {
 
     public static void main(String... args) {
 
-        Planete mercure = new Planete("Mercure");
+        PlaneteTellurique mercure = new PlaneteTellurique("MERCURE");
         mercure.diametre = 4880;
-        mercure.matiere = "Tellurique";
-        Planete venus = new Planete("Venus");
-        venus.diametre = 12100;
-        venus.matiere = "Tellurique";
-        Planete terre = new Planete("Terre");
-        terre.diametre = 12756;
-        terre.matiere = "Tellurique";
-        Planete mars = new Planete("Mars");
-        mars.diametre = 6792;
-        mars.matiere = "Tellurique";
-        Planete jupiter = new Planete("Jupiter");
-        jupiter.diametre = 142984;
-        jupiter.matiere = "Gazeuse";
-        Planete saturne = new Planete("Saturne");
-        saturne.diametre = 120536;
-        saturne.matiere = "Gazeuse";
-        Planete uranus = new Planete("Uranus");
-        uranus.diametre = 51118;
-        uranus.matiere = "Gazeuse";
-        Planete neptune = new Planete("Neptune");
-        neptune.diametre = 49532;
-        neptune.matiere = "Gazeuse";
 
-        VaisseauDeGuerre chasseur = new VaisseauDeGuerre();
+        PlaneteTellurique venus = new PlaneteTellurique("Venus");
+        venus.diametre = 12100;
+
+        PlaneteTellurique terre = new PlaneteTellurique("Terre");
+        terre.diametre = 12756;
+
+        PlaneteTellurique mars = new PlaneteTellurique("Mars");
+        mars.diametre = 6792;
+
+        PlaneteGazeuse jupiter = new PlaneteGazeuse("Jupiter");
+        jupiter.diametre = 142984;
+
+        PlaneteGazeuse saturne = new PlaneteGazeuse("Saturne");
+        saturne.diametre = 120536;
+
+        PlaneteGazeuse uranus = new PlaneteGazeuse("Uranus");
+        uranus.diametre = 51118;
+
+        PlaneteGazeuse neptune = new PlaneteGazeuse("Neptune");
+        neptune.diametre = 49532;
+
+        VaisseauDeGuerre chasseur=new VaisseauDeGuerre();
         chasseur.type="CHASSEUR";
         chasseur.blindage=156;
         chasseur.resistanceDuBouclier=2;
 
-        VaisseauCivil vaisseauMonde = new VaisseauCivil();
+        VaisseauCivil vaisseauMonde=new VaisseauCivil();
         vaisseauMonde.type="VAISSEAU-MONDE";
         vaisseauMonde.blindage=4784;
         vaisseauMonde.resistanceDuBouclier=30;
 
         vaisseauMonde.activerBouclier();
-        chasseur.activerBouclier();
-        chasseur.attaque(vaisseauMonde,"lasers photoniques",3);
+        chasseur.attaque(vaisseauMonde, "laser photonique", 3);
         vaisseauMonde.desactiverBouclier();
 
-        System.out.println("Durée de protection résiduelle du "+vaisseauMonde.type+" "+vaisseauMonde.resistanceDuBouclier);
-        System.out.println("Durée de protection du blindage du "+vaisseauMonde.type+" "+vaisseauMonde.blindage);
+        System.out.println("Le Vaisseau-Monde dispose encore de "+vaisseauMonde.resistanceDuBouclier+" minutes de protection grâce à son bouclier.");
+        System.out.println("Le Vaisseau-Monde dispose encore d'un blindage de valeur "+vaisseauMonde.blindage+".");
 
+        mars.accueillirVaisseau(vaisseauMonde);
 
+        mars.accueillirVaisseau(chasseur);
     }
 
 }

@@ -1,26 +1,20 @@
 
 public class Planete {
-    static int nbPlanetesDecouvertes;
     String nom;
     int diametre;
-    String matiere;
-    int totalVisiteurs;
+
     Atmosphere atmosphere;
 
-    Vaisseau vaisseau;
+    static String forme="Sphérique";
+    static int nbPlanetesDecouvertes;
 
-    Planete (String nom){
-        nbPlanetesDecouvertes+=1;
-        this.nom=nom;
+    Planete(){
+
     }
 
-    static String expansion(double distance){
-        if (distance<14){
-            return "Oh la la mais c'est super rapide !";
-        }
-        else{
-            return "Je rêve ou c'est plus rapide que la lumière ?";
-        }
+    Planete(String nom){
+        this.nom=nom;
+        nbPlanetesDecouvertes++;
     }
 
     int revolution(int degres){
@@ -33,27 +27,12 @@ public class Planete {
         return degres/360;
     }
 
-    void accueillirVaisseau(Vaisseau vaisseau){
-
-        if (this.vaisseau==null){
-            System.out.println("Aucun vaisseau ne s'en va");
+    static String expansion (double milliardsDAnneesLumiere){
+        if (milliardsDAnneesLumiere < 14){
+            return "Oh la la mais c'est super rapide !";
         }
-        else{
-            System.out.println("Un vaisseau de type "+this.vaisseau.type+" doit s'en aller");
+        else {
+            return "Je rêve ou c'est plus rapide que la lumière ?";
         }
-        this.vaisseau=vaisseau;
-        this.totalVisiteurs+=this.vaisseau.nbPassagers;
     }
-
-    /*void accueillirVaisseau(String typeVaisseau){
-        if (typeVaisseau.equals("CHASSEUR")){
-            totalVisiteurs+=3;
-        }
-        else if (typeVaisseau.equals("FREGATE")){
-            totalVisiteurs+=12;
-        }
-        else if (typeVaisseau.equals("CROISEUR")){
-            totalVisiteurs+=50;
-        }
-    }*/
 }
