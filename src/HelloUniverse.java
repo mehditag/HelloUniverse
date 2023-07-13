@@ -34,10 +34,28 @@ public class HelloUniverse {
         chasseur.blindage=156;
         chasseur.resistanceDuBouclier=2;
 
-        Vaisseau vaisseauMonde=new VaisseauCivil();
+        System.out.println("Un vaisseau de type "+chasseur.type+ " se voit refuser "+chasseur.emporterCargaison(20)+" tonnes l'embarquement");
+
+
+        Vaisseau fregate = new VaisseauDeGuerre("FREGATE");
+        fregate.nbPassagers=100;
+        System.out.println("Un vaisseau de type "+fregate.type+ " se voit refuser "+fregate.emporterCargaison(45)+" tonnes à l'embarquement");
+        System.out.println("Un vaisseau de type "+fregate.type+ " se voit refuser "+fregate.emporterCargaison(12)+" tonnes à l'embarquement");
+
+        Vaisseau fregate2 = new VaisseauDeGuerre("FREGATE");
+        fregate2.nbPassagers=14;
+        System.out.println("Un vaisseau de type "+fregate2.type+ " se voit refuser "+fregate2.emporterCargaison(30)+" tonnes à l'embarquement");
+
+
+
+        Vaisseau vaisseauMonde=new VaisseauCivil("VAISSEAU-MONDE");
         vaisseauMonde.type="VAISSEAU-MONDE";
         vaisseauMonde.blindage=4784;
         vaisseauMonde.resistanceDuBouclier=30;
+
+        System.out.println("Un vaisseau de type "+vaisseauMonde.type+ " se voit refuser "+vaisseauMonde.emporterCargaison(1560)+" tonnes à l'embarquement");
+        System.out.println("Un vaisseau de type "+vaisseauMonde.type+ " se voit refuser "+vaisseauMonde.emporterCargaison(600)+" tonnes à l'embarquement");
+
 
         vaisseauMonde.activerBouclier();
         chasseur.activerBouclier();
@@ -50,6 +68,11 @@ public class HelloUniverse {
         mars.accueillirVaisseau(vaisseauMonde);
 
         mars.accueillirVaisseau(chasseur);
+
+
+
+
+
     }
 
 }

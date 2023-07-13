@@ -2,6 +2,14 @@
 public class VaisseauDeGuerre extends Vaisseau {
     boolean armesDesactivees;
 
+    VaisseauDeGuerre(){
+        super();
+    }
+
+    VaisseauDeGuerre(String type){
+        super(type);
+    }
+
     void attaque(Vaisseau vaisseauCible, String arme, int duree){
 
         if (armesDesactivees){
@@ -21,5 +29,33 @@ public class VaisseauDeGuerre extends Vaisseau {
 
     void activerBouclier(){
         this.desactiverArmes();
+        super.activerBouclier();
+    }
+
+    @Override
+    int emporterCargaison(int tonnage) {
+
+        System.out.println("Le vaisseau "+this.type+" tente d'embarquer "+tonnage+" tonnes");
+
+        if (this.equals("CHASSEUR")) return tonnage;
+        else{
+            if (this.nbPassagers<12) return tonnage;
+            else{
+                int tonnagePassagers = 2*this.nbPassagers;
+                int tonnageRestant = this.tonnageMax-this.tonnageActuel;
+                int tonnageAConsiderer=(tonnagePassagers<tonnageRestant ? tonnagePassagers : tonnageRestant);
+                if (tonnage>tonnageAConsiderer){
+                    this.tonnageActuel=this.tonnageMax;
+                    return tonnage-tonnageAConsiderer;
+                }
+                else{
+                    this.tonnageActuel+=tonnage;
+                    return 0;
+                }
+            }
+
+
+
+        }
     }
 }
