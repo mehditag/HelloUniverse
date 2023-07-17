@@ -15,6 +15,7 @@ public abstract class Planete {
     Planete(String nom){
         this.nom=nom;
         nbPlanetesDecouvertes++;
+        this.atmosphere=new Atmosphere();
     }
 
     int revolution(int degres){
@@ -34,5 +35,10 @@ public abstract class Planete {
         else {
             return "Je rêve ou c'est plus rapide que la lumière ?";
         }
+    }
+
+    void descAtmosphere() {
+        System.out.println("L'atmosphère de "+this.nom+" est composée :");
+        this.atmosphere.descAtmosphere();
     }
 }

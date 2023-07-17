@@ -52,7 +52,7 @@ public class HelloUniverse {
         vaisseauMonde.blindage=4784;
         vaisseauMonde.resistanceDuBouclier=30;
 
-        Scanner sc = new Scanner(System.in);
+        /*Scanner sc = new Scanner(System.in);
 
         System.out.println("Quel vaisseau voulez-vous manipuler");
         Vaisseau vaisseauSelectionne=null;
@@ -76,7 +76,14 @@ public class HelloUniverse {
         int tonnage=sc.nextInt();
 
         planeteChoisie.accueillirVaisseau(vaisseauSelectionne);
-        System.out.println("Tonnage rejeté : "+vaisseauSelectionne.emporterCargaison(tonnage));
+        System.out.println("Tonnage rejeté : "+vaisseauSelectionne.emporterCargaison(tonnage));*/
+
+        uranus.atmosphere.tauxHydrogene=83F;
+        uranus.atmosphere.tauxHelium=15F;
+        uranus.atmosphere.tauxMethane=2.5F;
+        uranus.atmosphere.tauxAzote=0.0F;
+
+        uranus.descAtmosphere();
 
 
     }
