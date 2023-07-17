@@ -1,5 +1,4 @@
-
-
+import java.util.Scanner;
 
 public class HelloUniverse {
 
@@ -34,17 +33,17 @@ public class HelloUniverse {
         chasseur.blindage=156;
         chasseur.resistanceDuBouclier=2;
 
-        System.out.println("Un vaisseau de type "+chasseur.type+ " se voit refuser "+chasseur.emporterCargaison(20)+" tonnes l'embarquement");
+        ;System.out.println("Un vaisseau de type "+chasseur.type+ " se voit refuser "+chasseur.emporterCargaison(20)+" tonnes l'embarquement");
 
 
         Vaisseau fregate = new VaisseauDeGuerre("FREGATE");
         fregate.nbPassagers=100;
-        System.out.println("Un vaisseau de type "+fregate.type+ " se voit refuser "+fregate.emporterCargaison(45)+" tonnes à l'embarquement");
-        System.out.println("Un vaisseau de type "+fregate.type+ " se voit refuser "+fregate.emporterCargaison(12)+" tonnes à l'embarquement");
+        ;System.out.println("Un vaisseau de type "+fregate.type+ " se voit refuser "+fregate.emporterCargaison(45)+" tonnes à l'embarquement");
+        ;System.out.println("Un vaisseau de type "+fregate.type+ " se voit refuser "+fregate.emporterCargaison(12)+" tonnes à l'embarquement");
 
         Vaisseau fregate2 = new VaisseauDeGuerre("FREGATE");
         fregate2.nbPassagers=14;
-        System.out.println("Un vaisseau de type "+fregate2.type+ " se voit refuser "+fregate2.emporterCargaison(30)+" tonnes à l'embarquement");
+        ;System.out.println("Un vaisseau de type "+fregate2.type+ " se voit refuser "+fregate2.emporterCargaison(30)+" tonnes à l'embarquement");
 
 
 
@@ -53,24 +52,31 @@ public class HelloUniverse {
         vaisseauMonde.blindage=4784;
         vaisseauMonde.resistanceDuBouclier=30;
 
-        System.out.println("Un vaisseau de type "+vaisseauMonde.type+ " se voit refuser "+vaisseauMonde.emporterCargaison(1560)+" tonnes à l'embarquement");
-        System.out.println("Un vaisseau de type "+vaisseauMonde.type+ " se voit refuser "+vaisseauMonde.emporterCargaison(600)+" tonnes à l'embarquement");
+        Scanner sc = new Scanner(System.in);
 
+        System.out.println("Quel vaisseau voulez-vous manipuler");
+        Vaisseau vaisseauSelectionne=null;
+        String vaisseau=sc.nextLine();
+        switch (vaisseau){
+            case "FREGATE":vaisseauSelectionne=fregate;break;
+            case "FREGATE2":vaisseauSelectionne=fregate;break;
+            case "VAISSEAU-MONDE","VM":vaisseauSelectionne=vaisseauMonde;
+        }
 
-        vaisseauMonde.activerBouclier();
-        chasseur.activerBouclier();
-        ((VaisseauDeGuerre) chasseur).attaque(vaisseauMonde, "laser photonique", 3);
-        vaisseauMonde.desactiverBouclier();
+        System.out.println("Sur quel planète voulez vous atterir ");
+        String planete=sc.nextLine();
+        PlaneteTellurique planeteChoisie= null;
+        switch (planete)
+        {
+            case "TERRE":planeteChoisie=terre;break;
+            case "MARS":planeteChoisie=mars;break;
+        }
 
-        System.out.println("Le Vaisseau-Monde dispose encore de "+vaisseauMonde.resistanceDuBouclier+" minutes de protection grâce à son bouclier.");
-        System.out.println("Le Vaisseau-Monde dispose encore d'un blindage de valeur "+vaisseauMonde.blindage+".");
+        System.out.println("Combien de tonne souhaitez vous charger");
+        int tonnage=sc.nextInt();
 
-        mars.accueillirVaisseau(vaisseauMonde);
-
-        mars.accueillirVaisseau(chasseur);
-
-
-
+        planeteChoisie.accueillirVaisseau(vaisseauSelectionne);
+        System.out.println("Tonnage rejeté : "+vaisseauSelectionne.emporterCargaison(tonnage));
 
 
     }
