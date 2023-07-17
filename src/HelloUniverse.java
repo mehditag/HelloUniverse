@@ -29,38 +29,37 @@ public class HelloUniverse {
         neptune.diametre = 49532;
 
         Vaisseau chasseur=new VaisseauDeGuerre();
-        chasseur.type="CHASSEUR";
+        chasseur.type=TypeVaisseau.CHASSEUR;
         chasseur.blindage=156;
         chasseur.resistanceDuBouclier=2;
 
         ;System.out.println("Un vaisseau de type "+chasseur.type+ " se voit refuser "+chasseur.emporterCargaison(20)+" tonnes l'embarquement");
 
 
-        Vaisseau fregate = new VaisseauDeGuerre("FREGATE");
+        Vaisseau fregate = new VaisseauDeGuerre(TypeVaisseau.valueOf("FREGATE"));
         fregate.nbPassagers=100;
         ;System.out.println("Un vaisseau de type "+fregate.type+ " se voit refuser "+fregate.emporterCargaison(45)+" tonnes à l'embarquement");
         ;System.out.println("Un vaisseau de type "+fregate.type+ " se voit refuser "+fregate.emporterCargaison(12)+" tonnes à l'embarquement");
 
-        Vaisseau fregate2 = new VaisseauDeGuerre("FREGATE");
+        Vaisseau fregate2 = new VaisseauDeGuerre(TypeVaisseau.valueOf("FREGATE"));
         fregate2.nbPassagers=14;
-        ;System.out.println("Un vaisseau de type "+fregate2.type+ " se voit refuser "+fregate2.emporterCargaison(30)+" tonnes à l'embarquement");
+        //System.out.println("Un vaisseau de type "+fregate2.type+ " se voit refuser "+fregate2.emporterCargaison(30)+" tonnes à l'embarquement");
 
 
 
-        Vaisseau vaisseauMonde=new VaisseauCivil("VAISSEAU-MONDE");
-        vaisseauMonde.type="VAISSEAU-MONDE";
+        Vaisseau vaisseauMonde=new VaisseauCivil(TypeVaisseau.VAISSEAUMONDE);
+        //vaisseauMonde.type=TypeVaisseau.valueOf("Vaisseau-Monde");
         vaisseauMonde.blindage=4784;
         vaisseauMonde.resistanceDuBouclier=30;
 
-        /*Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         System.out.println("Quel vaisseau voulez-vous manipuler");
         Vaisseau vaisseauSelectionne=null;
-        String vaisseau=sc.nextLine();
+        TypeVaisseau vaisseau=TypeVaisseau.valueOf(sc.nextLine());
         switch (vaisseau){
-            case "FREGATE":vaisseauSelectionne=fregate;break;
-            case "FREGATE2":vaisseauSelectionne=fregate;break;
-            case "VAISSEAU-MONDE","VM":vaisseauSelectionne=vaisseauMonde;
+            case FREGATE:vaisseauSelectionne=fregate;break;
+            case VAISSEAUMONDE:vaisseauSelectionne=vaisseauMonde;
         }
 
         System.out.println("Sur quel planète voulez vous atterir ");
@@ -76,7 +75,7 @@ public class HelloUniverse {
         int tonnage=sc.nextInt();
 
         planeteChoisie.accueillirVaisseau(vaisseauSelectionne);
-        System.out.println("Tonnage rejeté : "+vaisseauSelectionne.emporterCargaison(tonnage));*/
+        System.out.println("Tonnage rejeté : "+vaisseauSelectionne.emporterCargaison(tonnage));
 
         uranus.atmosphere.tauxHydrogene=83F;
         uranus.atmosphere.tauxHelium=15F;

@@ -5,7 +5,7 @@ public class VaisseauCivil extends Vaisseau{
         super();
     }
 
-    VaisseauCivil(String type){
+    VaisseauCivil(TypeVaisseau type){
         super(type);
     }
     @Override

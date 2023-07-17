@@ -1,6 +1,6 @@
 
 public abstract class Vaisseau {
-    String type;
+    TypeVaisseau type;
     int nbPassagers;
     int resistanceDuBouclier;
     int blindage;
@@ -11,14 +11,14 @@ public abstract class Vaisseau {
 
     }
 
-    Vaisseau(String type){
-        this.type=type;
+    Vaisseau(TypeVaisseau type){
+        this.type= type;
         switch(type){
-            case "CHASSEUR":        this.tonnageMax=0;break;
-            case "FREGATE":         this.tonnageMax=50;break;
-            case "CROISEUR":        this.tonnageMax=100;break;
-            case "CARGO":           this.tonnageMax=500;break;
-            case "VAISSEAU-MONDE":  this.tonnageMax=2000;break;
+            case CHASSEUR:        this.tonnageMax=0;break;
+            case FREGATE:         this.tonnageMax=50;break;
+            case CROISEUR:        this.tonnageMax=100;break;
+            case CARGO:           this.tonnageMax=500;break;
+            case VAISSEAUMONDE:  this.tonnageMax=2000;break;
         }
 
     }

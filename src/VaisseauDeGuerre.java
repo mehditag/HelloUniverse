@@ -6,7 +6,7 @@ public class VaisseauDeGuerre extends Vaisseau {
         super();
     }
 
-    VaisseauDeGuerre(String type){
+    VaisseauDeGuerre(TypeVaisseau type){
         super(type);
     }
 
