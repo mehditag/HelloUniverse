@@ -8,14 +8,9 @@ public abstract class Planete {
     static String forme="Sphérique";
     static int nbPlanetesDecouvertes;
 
-    Planete(){
-
-    }
-
     Planete(String nom){
         this.nom=nom;
         nbPlanetesDecouvertes++;
-        this.atmosphere=new Atmosphere();
     }
 
     int revolution(int degres){
@@ -28,6 +23,8 @@ public abstract class Planete {
         return degres/360;
     }
 
+
+
     static String expansion (double milliardsDAnneesLumiere){
         if (milliardsDAnneesLumiere < 14){
             return "Oh la la mais c'est super rapide !";
@@ -35,10 +32,5 @@ public abstract class Planete {
         else {
             return "Je rêve ou c'est plus rapide que la lumière ?";
         }
-    }
-
-    void descAtmosphere() {
-        System.out.println("L'atmosphère de "+this.nom+" est composée :");
-        this.atmosphere.descAtmosphere();
     }
 }

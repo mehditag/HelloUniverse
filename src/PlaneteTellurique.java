@@ -1,29 +1,54 @@
+public class PlaneteTellurique extends Planete implements Habitable {
 
-public class PlaneteTellurique extends Planete implements Habitable{
-    Vaisseau vaisseauAccoste;
+    Vaisseau[][] vaisseauxAccostes;
     int totalVisiteurs;
 
-    public PlaneteTellurique(String nom) {
+    public PlaneteTellurique(String nom, int nbPlacesParCategorie) {
         super(nom);
+        vaisseauxAccostes = new Vaisseau[2][nbPlacesParCategorie];
     }
 
-    public void accueillirVaisseau(Vaisseau nouveauVaisseau){
-        totalVisiteurs+=nouveauVaisseau.nbPassagers;
-        Vaisseau vaisseauPrecedent=vaisseauAccoste;
+    boolean restePlaceDisponible(Vaisseau vaisseau) {
 
-        if (nouveauVaisseau instanceof VaisseauDeGuerre){
-            ((VaisseauDeGuerre) nouveauVaisseau).desactiverArmes();
+        TypeVaisseau typeVaisseau=vaisseau.type;
+        int indexCategorie = 0;
+        switch (typeVaisseau) {
+            case CARGO:
+            case VAISSEAUMONDE:
+                indexCategorie = 1;
         }
 
-        if (vaisseauPrecedent==null){
-            System.out.println("Aucun vaisseau ne s'en va");
+        for (int i = 0; i < vaisseauxAccostes[indexCategorie].length; i++) {
+            if (vaisseauxAccostes[indexCategorie][i] == null) {
+                return true;
+            }
         }
-        else{
-            System.out.println("Le vaisseau de type "+vaisseauPrecedent.type+" doit s'en aller");
+        return false;
+    }
+
+    public void accueillirVaisseaux(Vaisseau... nouveauVaisseaux) {
+
+        for (int j = 0; j < nouveauVaisseaux.length; j++) {
+            if (nouveauVaisseaux[j] instanceof VaisseauDeGuerre) {
+                ((VaisseauDeGuerre) nouveauVaisseaux[j]).desactiverArmes();
+            }
+
+            totalVisiteurs += nouveauVaisseaux[j].nbPassagers;
+
+            int indexCategorie = 0;
+            switch (nouveauVaisseaux[j].type) {
+                case CARGO:
+                case VAISSEAUMONDE:
+                    indexCategorie = 1;
+            }
+
+            for (int i = 0; i < vaisseauxAccostes[indexCategorie].length; i++) {
+                if (vaisseauxAccostes[indexCategorie][i] == null) {
+                    vaisseauxAccostes[indexCategorie][i] = nouveauVaisseaux[j];
+                    break;
+                }
+            }
         }
-        vaisseauAccoste=nouveauVaisseau;
-        //return vaisseauPrecedent;
+
     }
 }
-
-

@@ -4,31 +4,17 @@ public abstract class Vaisseau {
     int nbPassagers;
     int resistanceDuBouclier;
     int blindage;
-    int tonnageActuel;
     int tonnageMax;
+    int tonnageActuel;
 
-    Vaisseau(){
-
-    }
-
-    Vaisseau(TypeVaisseau type){
-        this.type= type;
-        switch(type){
-            case CHASSEUR:        this.tonnageMax=0;break;
-            case FREGATE:         this.tonnageMax=50;break;
-            case CROISEUR:        this.tonnageMax=100;break;
-            case CARGO:           this.tonnageMax=500;break;
-            case VAISSEAUMONDE:  this.tonnageMax=2000;break;
-        }
-
-    }
     void activerBouclier(){
-        System.out.println("Activation du bouclier d'un vaisseau de type "+type+".");
+        System.out.println("Activation du bouclier d'un vaisseau de type "+type.nom+".");
     }
 
     void desactiverBouclier(){
-        System.out.println("Désactivation du bouclier d'un vaisseau de type "+type+".");
+        System.out.println("Désactivation du bouclier d'un vaisseau de type "+type.nom+".");
     }
 
     abstract int emporterCargaison(int tonnage);
+
 }

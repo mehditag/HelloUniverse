@@ -1,25 +1,24 @@
+public class VaisseauCivil extends Vaisseau {
 
-public class VaisseauCivil extends Vaisseau{
+    public VaisseauCivil(TypeVaisseau type) {
+        this.type = type;
+        if (type == TypeVaisseau.CARGO) {
+            tonnageMax = 500;
+        } else if (type == TypeVaisseau.VAISSEAUMONDE) {
+            tonnageMax = 2000;
+        }
 
-    VaisseauCivil(){
-        super();
     }
 
-    VaisseauCivil(TypeVaisseau type){
-        super(type);
-    }
-    @Override
     int emporterCargaison(int tonnage) {
 
-        System.out.println("Le vaisseau "+this.type+" tente d'embarquer "+tonnage+" tonnes");
-        int tonnageRestant = this.tonnageMax-this.tonnageActuel;
-        if (tonnage>tonnageRestant){
-            this.tonnageActuel=this.tonnageMax;
+        int tonnageRestant = tonnageMax - tonnageActuel;
+        if (tonnage > tonnageRestant) {
+            tonnageActuel = tonnageMax;
             return tonnage-tonnageRestant;
         }
-        else{
-            this.tonnageActuel+=tonnage;
-            return 0;
-        }
+        tonnageActuel+=tonnage;
+        return 0;
     }
+
 }
