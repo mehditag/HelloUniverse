@@ -19,6 +19,20 @@ public class HelloUniverse {
         PlaneteTellurique mars = new PlaneteTellurique("Mars", 5);
         mars.diametre = 6792;
         systemeSolaire.planetes.add(mars);
+
+        mars.atmosphere = new Atmosphere();
+
+        mars.atmosphere.constituants.put("CO2",95f);
+        mars.atmosphere.constituants.put("N2",3f);
+        mars.atmosphere.constituants.put("AR",1.5f);
+        mars.atmosphere.constituants.put("NO",0.013f);
+
+        for (String constituant : mars.atmosphere.constituants.keySet()){
+            System.out.println("L'atmosphère de "+mars.nom+" est contitué de "+mars.atmosphere.constituants.get(constituant)+"% de "+constituant );
+        }
+
+
+
         PlaneteGazeuse jupiter = new PlaneteGazeuse("Jupiter");
         jupiter.diametre = 142984;
         systemeSolaire.planetes.add(jupiter);
@@ -97,16 +111,14 @@ public class HelloUniverse {
             }
 
             System.out.println("Sur quelle planète tellurique du systeme solaire voulez-vous vous poser : Mercure, Venus, Terre ou Mars ?");
-            String planeteChoisie = sc.nextLine();
-
+            String nomPlanete = sc.nextLine();
             Planete planeteSelectionneeDansGalaxie = null;
-
-            for (Planete planete : systemeSolaire.planetes){
-                if (planete.nom.equalsIgnoreCase(planeteChoisie)) {
-                    planeteSelectionneeDansGalaxie = (Planete)planete;
-                    break;}
+            for (Planete planeteSuivante : systemeSolaire.planetes){
+                if (planeteSuivante.nom.equals(nomPlanete)){
+                    planeteSelectionneeDansGalaxie=planeteSuivante;
+                    break;
+                }
             }
-
             if (planeteSelectionneeDansGalaxie instanceof PlaneteGazeuse){
                 System.out.println("Il ne s'agit pas d'une planète Tellurique !");
                 continue;
