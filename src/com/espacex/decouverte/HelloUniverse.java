@@ -1,4 +1,10 @@
 package com.espacex.decouverte;
+import static com.espacex.decouverte.enginsspatiaux.TypeVaisseau.CARGO;
+import static com.espacex.decouverte.enginsspatiaux.TypeVaisseau.FREGATE;
+import static com.espacex.decouverte.enginsspatiaux.TypeVaisseau.CROISEUR;
+import static com.espacex.decouverte.enginsspatiaux.TypeVaisseau.CHASSEUR;
+import static com.espacex.decouverte.enginsspatiaux.TypeVaisseau.VAISSEAUMONDE;
+
 import com.espacex.decouverte.enginsspatiaux.TypeVaisseau;
 import com.espacex.decouverte.enginsspatiaux.Vaisseau;
 import com.espacex.decouverte.enginsspatiaux.VaisseauCivil;
@@ -77,40 +83,40 @@ public class HelloUniverse {
             System.out.println("La planète "+p.nom+" se trouve à "+p.distanceEtoile+" du soleil");
         }
 
-        Vaisseau chasseur = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
+        Vaisseau chasseur = new VaisseauDeGuerre(CHASSEUR);
         chasseur.nbPassagers = 3;
         chasseur.blindage = 156;
         chasseur.resistanceDuBouclier = 2;
 
-        Vaisseau croiseur = new VaisseauDeGuerre(TypeVaisseau.CROISEUR);
+        Vaisseau croiseur = new VaisseauDeGuerre(CROISEUR);
         croiseur.nbPassagers = 35;
         croiseur.blindage = 851;
         croiseur.resistanceDuBouclier = 25;
 
-        Vaisseau fregate = new VaisseauDeGuerre(TypeVaisseau.FREGATE);
+        Vaisseau fregate = new VaisseauDeGuerre(FREGATE);
         fregate.nbPassagers = 100;
         fregate.blindage = 542;
         fregate.resistanceDuBouclier = 50;
 
-        Vaisseau cargo = new VaisseauCivil(TypeVaisseau.CARGO);
+        Vaisseau cargo = new VaisseauCivil(CARGO);
         cargo.nbPassagers = 10000;
         cargo.blindage = 1520;
         cargo.resistanceDuBouclier = 20;
 
-        Vaisseau vaisseauMonde = new VaisseauCivil(TypeVaisseau.VAISSEAUMONDE);
+        Vaisseau vaisseauMonde = new VaisseauCivil(VAISSEAUMONDE);
         vaisseauMonde.nbPassagers = 10000;
         vaisseauMonde.blindage = 4784;
         vaisseauMonde.resistanceDuBouclier = 30;
 
-        Vaisseau chasseur2 = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
+        Vaisseau chasseur2 = new VaisseauDeGuerre(CHASSEUR);
         chasseur2.nbPassagers = 4;
         chasseur2.blindage = 156;
         chasseur2.resistanceDuBouclier = 2;
-        Vaisseau chasseur3 = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
+        Vaisseau chasseur3 = new VaisseauDeGuerre(CHASSEUR);
         chasseur3.nbPassagers = 5;
         chasseur3.blindage = 156;
         chasseur3.resistanceDuBouclier = 2;
-        Vaisseau cargo2 = new VaisseauCivil(TypeVaisseau.CARGO);
+        Vaisseau cargo2 = new VaisseauCivil(CARGO);
         cargo2.nbPassagers = 10001;
         cargo2.blindage = 1520;
         cargo2.resistanceDuBouclier = 20;
@@ -119,7 +125,7 @@ public class HelloUniverse {
         Scanner sc = new Scanner(System.in);
         boolean recommencer = true;
         while (recommencer) {
-            System.out.println("Quel vaisseau souhaitez vous manipuler​ : " + TypeVaisseau.CHASSEUR.name() + ", " + TypeVaisseau.FREGATE.name() + ", " + TypeVaisseau.CROISEUR.name() + ", " + TypeVaisseau.CARGO.name() + " ou " + TypeVaisseau.VAISSEAUMONDE.name() + " ?");
+            System.out.println("Quel vaisseau souhaitez vous manipuler​ : " + CHASSEUR.name() + ", " + FREGATE.name() + ", " + CROISEUR.name() + ", " + CARGO.name() + " ou " + VAISSEAUMONDE.name() + " ?");
             String typeVaisseauString = sc.nextLine();
             TypeVaisseau typeVaisseau = TypeVaisseau.valueOf(typeVaisseauString);
             Vaisseau vaisseauSelectionne = null;
