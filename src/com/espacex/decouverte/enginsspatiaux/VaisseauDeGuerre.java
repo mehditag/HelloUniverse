@@ -1,27 +1,28 @@
 package com.espacex.decouverte.enginsspatiaux;
-import com.espacex.decouverte.enginsspatiaux.DepassementTonnageException;
 
-import java.util.Scanner;
+import static com.espacex.decouverte.enginsspatiaux.TypeVaisseau.CHASSEUR;
+import static com.espacex.decouverte.enginsspatiaux.TypeVaisseau.FREGATE;
+import static com.espacex.decouverte.enginsspatiaux.TypeVaisseau.CROISEUR;
 
-public class VaisseauDeGuerre extends Vaisseau{
+public class VaisseauDeGuerre extends Vaisseau {
 
     private boolean armesDesactivees;
 
     public VaisseauDeGuerre(TypeVaisseau type){
         super(type);
-        if (type==TypeVaisseau.CHASSEUR){
+        if (type==CHASSEUR){
             tonnageMax=0;
         }
-        else if (type==TypeVaisseau.FREGATE){
+        else if (type==FREGATE){
             tonnageMax=50;
         }
-        else if (type==TypeVaisseau.CROISEUR){
+        else if (type==CROISEUR){
             tonnageMax=100;
         }
 
     }
 
-    void attaque(Vaisseau vaisseauCible, String arme, int duree) {
+    public void attaque(Vaisseau vaisseauCible, String arme, int duree) {
         if (armesDesactivees) {
             System.out.println("Attaque impossible, l'armement est désactivé");
         } else {
@@ -36,52 +37,36 @@ public class VaisseauDeGuerre extends Vaisseau{
         armesDesactivees = true;
     }
 
-    void activerBouclier(){
-        System.out.println("Activation du bouclier d'un vaisseau de type "+type.nom+".");
-        desactiverArmes();
-    }
-
-    void activerArmes(){
+    public void activerArmes() {
         System.out.println("Activation des armes d'un vaisseau de type " + type.nom);
         armesDesactivees = false;
     }
 
-    public int emporterCargaison(int cargaison) {
-        if (type==TypeVaisseau.CHASSEUR){
-            return cargaison;
+    public void activerBouclier(){
+        System.out.println("Activation du bouclier d'un vaisseau de type "+type.nom+".");
+        desactiverArmes();
+    }
+
+    public void emporterCargaison (int cargaison) throws DepassementTonnageException{
+        if (type==CHASSEUR){
+            throw new DepassementTonnageException(cargaison);
         }
         else {
             if (nbPassagers<12){
-                return cargaison;
+                throw new DepassementTonnageException(cargaison);
             }
             else {
                 int tonnagePassagers=nbPassagers*2;
                 int tonnageRestant=tonnageMax-tonnageActuel;
                 int tonnageAConsiderer=(tonnagePassagers<tonnageRestant ? tonnagePassagers : tonnageRestant);
-                try {
-                    this.verifTonnage(cargaison,tonnageAConsiderer);
+                if (cargaison>tonnageAConsiderer){
+                    //tonnageActuel=tonnageMax;
+                    throw new DepassementTonnageException(cargaison-tonnageAConsiderer);
+                }
+                else {
                     tonnageActuel+=cargaison;
-                    return 0;
-                } catch (DepassementTonnageException e) {
-                    System.out.println(e.getMessage());
-                    System.out.println("Voulez-vous emporter une cargaison partielle à hauteur de la place disponible ("+tonnageAConsiderer+" tonnes) oui/non");
-                    Scanner sc = new Scanner(System.in);
-                    if (sc.nextLine().equals("oui")) {
-                        tonnageActuel=tonnageMax;
-                        return cargaison-tonnageAConsiderer;
-                    }
-                    else{
-                        return cargaison;
-
-                    }
                 }
             }
-        }
-    }
-
-    private void verifTonnage(int cargaison, int tonnageAConsiderer) throws DepassementTonnageException{
-        if (cargaison>tonnageAConsiderer){
-            throw new DepassementTonnageException(cargaison-tonnageAConsiderer);
         }
     }
 }
