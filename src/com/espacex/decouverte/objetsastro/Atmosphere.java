@@ -1,3 +1,5 @@
+package com.espacex.decouverte.objetsastro;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,5 +12,5 @@ public class Atmosphere {
     Float tauxSodium;
     Float tauxMethane;
 
-    Map<String,Float> constituants = new HashMap();
+    public Map<String,Float> constituants = new HashMap();
 }

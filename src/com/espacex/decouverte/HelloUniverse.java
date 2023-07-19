@@ -1,4 +1,16 @@
+package com.espacex.decouverte;
+import com.espacex.decouverte.enginsspatiaux.TypeVaisseau;
+import com.espacex.decouverte.enginsspatiaux.Vaisseau;
+import com.espacex.decouverte.enginsspatiaux.VaisseauCivil;
+import com.espacex.decouverte.enginsspatiaux.VaisseauDeGuerre;
+import com.espacex.decouverte.objetsastro.Atmosphere;
+import com.espacex.decouverte.objetsastro.Galaxie;
+import com.espacex.decouverte.objetsastro.Planete;
+import com.espacex.decouverte.objetsastro.PlaneteGazeuse;
+import com.espacex.decouverte.objetsastro.PlaneteTellurique;
+
 import java.util.Scanner;
+
 
 public class HelloUniverse {
 
@@ -9,16 +21,20 @@ public class HelloUniverse {
 
         PlaneteTellurique mercure = new PlaneteTellurique("Mercure", 1);
         mercure.diametre = 4880;
-        systemeSolaire.planetes.add(mercure);
+        mercure.distanceEtoile=57.9f;
+
         PlaneteTellurique venus = new PlaneteTellurique("Venus", 2);
         venus.diametre = 12100;
-        systemeSolaire.planetes.add(venus);
+        venus.distanceEtoile=108.2f;
+
         PlaneteTellurique terre = new PlaneteTellurique("Terre", 100);
         terre.diametre = 12756;
-        systemeSolaire.planetes.add(terre);
+        terre.distanceEtoile=149.6f;
+
         PlaneteTellurique mars = new PlaneteTellurique("Mars", 5);
         mars.diametre = 6792;
-        systemeSolaire.planetes.add(mars);
+        mars.distanceEtoile=227.9f;
+
 
         mars.atmosphere = new Atmosphere();
 
@@ -31,20 +47,35 @@ public class HelloUniverse {
             System.out.println("L'atmosphère de "+mars.nom+" est contitué de "+mars.atmosphere.constituants.get(constituant)+"% de "+constituant );
         }
 
-
-
         PlaneteGazeuse jupiter = new PlaneteGazeuse("Jupiter");
         jupiter.diametre = 142984;
-        systemeSolaire.planetes.add(jupiter);
+        jupiter.distanceEtoile=778.3f;
+
         PlaneteGazeuse saturne = new PlaneteGazeuse("Saturne");
         saturne.diametre = 120536;
-        systemeSolaire.planetes.add(saturne);
+        saturne.distanceEtoile=1427.0f;
+
         PlaneteGazeuse uranus = new PlaneteGazeuse("Uranus");
         uranus.diametre = 51118;
-        systemeSolaire.planetes.add(uranus);
+        uranus.distanceEtoile=2877.38f;
+
         PlaneteGazeuse neptune = new PlaneteGazeuse("Neptune");
         neptune.diametre = 49532;
+        neptune.distanceEtoile=4497.07f;
+
+
+        systemeSolaire.planetes.add(uranus);
         systemeSolaire.planetes.add(neptune);
+        systemeSolaire.planetes.add(mars);
+        systemeSolaire.planetes.add(venus);
+        systemeSolaire.planetes.add(saturne);
+        systemeSolaire.planetes.add(jupiter);
+        systemeSolaire.planetes.add(mercure);
+        systemeSolaire.planetes.add(terre);
+
+        for (Planete p : systemeSolaire.planetes) {
+            System.out.println("La planète "+p.nom+" se trouve à "+p.distanceEtoile+" du soleil");
+        }
 
         Vaisseau chasseur = new VaisseauDeGuerre(TypeVaisseau.CHASSEUR);
         chasseur.nbPassagers = 3;

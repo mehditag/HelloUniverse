@@ -1,3 +1,9 @@
+package com.espacex.decouverte.objetsastro;
+
+import com.espacex.decouverte.enginsspatiaux.TypeVaisseau;
+import com.espacex.decouverte.enginsspatiaux.Vaisseau;
+import com.espacex.decouverte.enginsspatiaux.VaisseauDeGuerre;
+
 public class PlaneteTellurique extends Planete implements Habitable {
 
     Vaisseau[][] vaisseauxAccostes;
@@ -8,7 +14,7 @@ public class PlaneteTellurique extends Planete implements Habitable {
         vaisseauxAccostes = new Vaisseau[2][nbPlacesParCategorie];
     }
 
-    boolean restePlaceDisponible(Vaisseau vaisseau) {
+    public boolean restePlaceDisponible(Vaisseau vaisseau) {
 
         TypeVaisseau typeVaisseau=vaisseau.type;
         int indexCategorie = 0;

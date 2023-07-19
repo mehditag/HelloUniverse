@@ -1,12 +1,14 @@
+package com.espacex.decouverte.objetsastro;
 
-public abstract class Planete {
-    String nom;
-    int diametre;
+public abstract class Planete implements Comparable {
+   public String nom;
+   public int diametre;
 
-    Atmosphere atmosphere;
+    public Atmosphere atmosphere;
 
     static String forme="Sphérique";
     static int nbPlanetesDecouvertes;
+    public Float distanceEtoile;
 
     Planete(String nom){
         this.nom=nom;
@@ -30,5 +32,10 @@ public abstract class Planete {
         else {
             return "Je rêve ou c'est plus rapide que la lumière ?";
         }
+    }
+
+    public int compareTo(Object o) {
+        Planete planeteAComparer = (Planete)o;
+        return this.distanceEtoile.compareTo(planeteAComparer.distanceEtoile);
     }
 }
