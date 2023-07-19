@@ -1,5 +1,9 @@
 package com.espacex.decouverte.enginsspatiaux;
-public class VaisseauDeGuerre extends Vaisseau {
+import com.espacex.decouverte.enginsspatiaux.DepassementTonnageException;
+
+import java.util.Scanner;
+
+public class VaisseauDeGuerre extends Vaisseau{
 
     private boolean armesDesactivees;
 
@@ -42,7 +46,7 @@ public class VaisseauDeGuerre extends Vaisseau {
         armesDesactivees = false;
     }
 
-    public int emporterCargaison(int cargaison){
+    public int emporterCargaison(int cargaison) {
         if (type==TypeVaisseau.CHASSEUR){
             return cargaison;
         }
@@ -54,15 +58,30 @@ public class VaisseauDeGuerre extends Vaisseau {
                 int tonnagePassagers=nbPassagers*2;
                 int tonnageRestant=tonnageMax-tonnageActuel;
                 int tonnageAConsiderer=(tonnagePassagers<tonnageRestant ? tonnagePassagers : tonnageRestant);
-                if (cargaison>tonnageAConsiderer){
-                    tonnageActuel=tonnageMax;
-                    return cargaison-tonnageAConsiderer;
-                }
-                else {
+                try {
+                    this.verifTonnage(cargaison,tonnageAConsiderer);
                     tonnageActuel+=cargaison;
                     return 0;
+                } catch (DepassementTonnageException e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("Voulez-vous emporter une cargaison partielle à hauteur de la place disponible ("+tonnageAConsiderer+" tonnes) oui/non");
+                    Scanner sc = new Scanner(System.in);
+                    if (sc.nextLine().equals("oui")) {
+                        tonnageActuel=tonnageMax;
+                        return cargaison-tonnageAConsiderer;
+                    }
+                    else{
+                        return cargaison;
+
+                    }
                 }
             }
+        }
+    }
+
+    private void verifTonnage(int cargaison, int tonnageAConsiderer) throws DepassementTonnageException{
+        if (cargaison>tonnageAConsiderer){
+            throw new DepassementTonnageException(cargaison-tonnageAConsiderer);
         }
     }
 }
