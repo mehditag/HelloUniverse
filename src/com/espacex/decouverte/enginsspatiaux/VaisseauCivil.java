@@ -13,12 +13,12 @@ public class VaisseauCivil extends Vaisseau {
 
     public int emporterCargaison(int tonnage) {
 
-        int tonnageRestant = tonnageMax - tonnageActuel;
+        int tonnageRestant = tonnageMax - this.tonnageActuel;
         if (tonnage > tonnageRestant) {
-            tonnageActuel = tonnageMax;
+            this.tonnageActuel = tonnageMax;
             return tonnage-tonnageRestant;
         }
-        tonnageActuel+=tonnage;
+        this.tonnageActuel+=tonnage;
         return 0;
     }
 

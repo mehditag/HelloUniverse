@@ -5,7 +5,7 @@ public abstract class Vaisseau {
     public int resistanceDuBouclier;
     public int blindage;
     int tonnageMax;
-    int tonnageActuel;
+    protected int tonnageActuel;
 
     void activerBouclier(){
         System.out.println("Activation du bouclier d'un vaisseau de type "+type.nom+".");
